@@ -41,7 +41,7 @@ public class RoverReceiver extends AsyncTask<String, Void, String> {
         //Het resultaat
         String response = "";
 
-        Log.i(TAG, "doInBackground - " + roverApi);
+        //Log.i(TAG, "doInBackground - " + roverApi);
         try{
             URL url = new URL(roverApi);
             URLConnection urlConnection = url.openConnection();
@@ -87,7 +87,7 @@ public class RoverReceiver extends AsyncTask<String, Void, String> {
      */
     protected void onPostExecute(String response) {
 
-        Log.i(TAG, "onPostExecute " + response);
+        //Log.i(TAG, "onPostExecute " + response);
 
         // Check of er een response is
         if(response == null || response == "") {
@@ -118,12 +118,12 @@ public class RoverReceiver extends AsyncTask<String, Void, String> {
                 String fullCameraName = cameraObject.getString("full_name");
 
 
-                Log.i(TAG, "Got camera " + id + " " + cameraId);
-                Log.i(TAG,"Full Camera name = " + fullCameraName);
+                //Log.i(TAG, "Got camera " + id + " " + cameraId);
+                //Log.i(TAG,"Full Camera name = " + fullCameraName);
 
                 // Get image url
                 String imageURL = roverObject.getString("img_src");
-                Log.i(TAG, imageURL);
+                //Log.i(TAG, imageURL);
 
                 // Create new object
                 // Builder Design Pattern
