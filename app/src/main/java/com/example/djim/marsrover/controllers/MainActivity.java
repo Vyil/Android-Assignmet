@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.example.djim.marsrover.api.RoverReceiver;
 import com.example.djim.marsrover.api.onRoverAvailable;
@@ -56,5 +57,11 @@ public class MainActivity extends AppCompatActivity implements onRoverAvailable 
 
         roverList.add(rover);
         recyclerAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
     }
 }

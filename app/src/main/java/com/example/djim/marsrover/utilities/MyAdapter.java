@@ -50,13 +50,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         @Override
         public void onClick(View view) {
             int position = getAdapterPosition();
-            RoverCollection roverCollection = dataArray.get(position);
+            RoverCollection roverCollection = (RoverCollection) dataArray.get(position);
 
-            Toast.makeText(context,Integer.toString(position),Toast.LENGTH_LONG).show();
             Intent marsDetail = new Intent(view.getContext().getApplicationContext(),
                     DetailScreen.class);
-            marsDetail.putExtra("ID", textView.getText().toString());
-            marsDetail.putExtra("IMG_URL", imageView.toString());
+            marsDetail.putExtra("ID", roverCollection);
 
             view.getContext().startActivity(marsDetail);
         }
@@ -81,7 +79,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position){
 
         RoverCollection roverCollection = dataArray.get(position);
-        holder.textView.setText(roverCollection.getCameraName());
+        holder.textView.setText("Image ID : " + roverCollection.getId());
 
         Picasso.with(context).load(roverCollection.getImageURL()).into(holder.imageView);
     }
