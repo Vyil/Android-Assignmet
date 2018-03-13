@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 /**
  * Created by Djim on 13-3-2018.
  */
@@ -15,7 +17,7 @@ import android.widget.TextView;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     private Context context;
-    private ArrayList<> images;
+    private ArrayList<String> imageNames;
 
     //Viewholder to remove findViewById performance pressure
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -44,8 +46,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         }
     }
 
-    public MyAdapter(Context context, ArrayList<> data){
-
+    //Default constructor
+    public MyAdapter(Context context, ArrayList<String> data){
+        this.context = context;
+        this.imageNames = data;
     }
 
     @Override
@@ -59,6 +63,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     public void onBindViewHolder(ViewHolder holder, int position){
-        
+
+    }
+
+    @Override
+    public int getItemCount(){
+        return imageNames.size();
     }
 }
