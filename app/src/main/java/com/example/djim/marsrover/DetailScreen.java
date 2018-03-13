@@ -14,6 +14,7 @@ public class DetailScreen extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstances){
         super.onCreate(savedInstances);
+        setContentView(R.layout.detail_screen);
 
         Bundle extras = getIntent().getExtras();
 
@@ -21,5 +22,7 @@ public class DetailScreen extends AppCompatActivity{
         TextView textView = findViewById(R.id.detailed_mars_text);
 
         textView.setText("Dummy text");
+
+        this.setTitle("DummyTitle");
     }
 }

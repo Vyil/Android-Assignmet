@@ -16,6 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="DetailScreen"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:parentActivityName="DetailScreen">
+        </activity>
     </application>
 
 </manifest>

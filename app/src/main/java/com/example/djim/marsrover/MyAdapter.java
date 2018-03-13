@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -45,6 +46,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         public void onClick(View view) {
             int position = getAdapterPosition();
 
+            Toast.makeText(context,Integer.toString(position),Toast.LENGTH_LONG).show();
             Intent marsDetail = new Intent(view.getContext().getApplicationContext(),
                     DetailScreen.class);
 
