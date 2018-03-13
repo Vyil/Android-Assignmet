@@ -28,10 +28,12 @@ public class MainActivity extends AppCompatActivity implements onRoverAvailable 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        roverList = new ArrayList<>();
-//        for(int i=0; i<10; i++){
-//            roverList.add(new RoverCollection(Integer.toString(i),"Testname","non"));
-//        }
+        if(savedInstanceState != null){
+            roverList = (ArrayList<RoverCollection>)savedInstanceState.getSerializable("key");
+        } else {
+            roverList = new ArrayList<>();
+        }
+
 
         String[] params = {"https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=cSZD57fGsdMoUQQHYx1GDlE7oitW03FyzMae43H6"};
         RoverReceiver roverReceiver = new RoverReceiver(this);
@@ -53,6 +55,12 @@ public class MainActivity extends AppCompatActivity implements onRoverAvailable 
     }
 
     @Override
+    public void onSaveInstanceState(Bundle outState){
+        outState.putSerializable("key", roverList);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
     public void onRoverAvailable(RoverCollection rover) {
 
         roverList.add(rover);
@@ -60,8 +68,8 @@ public class MainActivity extends AppCompatActivity implements onRoverAvailable 
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        roverList = (ArrayList<RoverCollection>) savedInstanceState.getSerializable("key");
     }
 }

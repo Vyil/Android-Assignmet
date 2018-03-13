@@ -22,13 +22,13 @@ public class DetailScreen extends AppCompatActivity{
         super.onCreate(savedInstances);
         setContentView(R.layout.detail_screen);
 
+        //Hide navbar untill tapped on screen
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
 
+        //Get extras from intent
         Bundle extras = getIntent().getExtras();
         RoverCollection roverCollection = (RoverCollection) extras.getSerializable("ID");
 
-        String id = extras.getString("ID");
-        //String importImage = extras.getString("IMG_URL");
         ImageView image = findViewById(R.id.detailed_mars_image);
         TextView textView = findViewById(R.id.detailed_mars_text);
 

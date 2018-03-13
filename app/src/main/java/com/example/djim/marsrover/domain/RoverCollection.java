@@ -1,5 +1,8 @@
 package com.example.djim.marsrover.domain;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.io.Serializable;
 
 /**
@@ -41,4 +44,5 @@ public class RoverCollection implements Serializable {
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
     }
+
 }

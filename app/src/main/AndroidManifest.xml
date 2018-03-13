@@ -17,8 +17,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".controllers.DetailScreen"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"
             android:parentActivityName=".controllers.DetailScreen">
         </activity>
     </application>
