@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
+    private static final String TAG= "MyAdapter";
     private Context context;
     private ArrayList<String> imageNames;
 
