@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.djim.marsrover.R;
 import com.example.djim.marsrover.controllers.DetailScreen;
+import com.example.djim.marsrover.domain.RoverCollection;
 
 import java.util.ArrayList;
 
@@ -23,7 +24,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     private static final String TAG= "MyAdapter";
     private Context context;
-    private ArrayList<String> imageNames;
+    private ArrayList<RoverCollection> dataArray;
 
     //Viewholder to remove findViewById performance pressure
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -48,19 +49,22 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         @Override
         public void onClick(View view) {
             int position = getAdapterPosition();
+            RoverCollection roverCollection = dataArray.get(position);
 
             Toast.makeText(context,Integer.toString(position),Toast.LENGTH_LONG).show();
             Intent marsDetail = new Intent(view.getContext().getApplicationContext(),
                     DetailScreen.class);
+            marsDetail.putExtra("ID", textView.getText().toString());
+            marsDetail.putExtra("IMG_URL", imageView.toString());
 
             view.getContext().startActivity(marsDetail);
         }
     }
 
     //Default constructor
-    public MyAdapter(Context context, ArrayList<String> data){
+    public MyAdapter(Context context, ArrayList<RoverCollection> data){
         this.context = context;
-        this.imageNames = data;
+        this.dataArray = data;
     }
 
     @Override
@@ -80,6 +84,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     @Override
     public int getItemCount(){
-        return imageNames.size();
+        return dataArray.size();
     }
 }

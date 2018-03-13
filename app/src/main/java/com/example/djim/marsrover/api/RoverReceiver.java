@@ -3,6 +3,8 @@ package com.example.djim.marsrover.api;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.djim.marsrover.domain.RoverCollection;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,11 +25,13 @@ import java.net.URLConnection;
 public class RoverReceiver extends AsyncTask<String, Void, String> {
 
     private static final String TAG = "RoverReceiver";
+    private onRoverAvailable listener = null;
 
-    public RoverReceiver(){
-
+    public RoverReceiver(onRoverAvailable listener){
+        this.listener =listener;
     }
 
+    //Aanroep naar service op internet
     @Override
     protected String doInBackground(String... params) {
         InputStream inputStream =null;
@@ -99,7 +103,7 @@ public class RoverReceiver extends AsyncTask<String, Void, String> {
             // Top level json object
             jsonObject = new JSONObject(response);
 
-            // Get all users and start looping
+            // Get all rovers and start looping
             JSONArray roverData = jsonObject.getJSONArray("photos");
             for(int idx = 0; idx < roverData.length(); idx++) {
                 // array level objects and get user
@@ -107,24 +111,28 @@ public class RoverReceiver extends AsyncTask<String, Void, String> {
 
                 // Get id and camera name
                 String id = roverObject.getString("id");
-                String cameraName = roverObject.getString("full_name");
+                //Get the camera object
+                JSONObject cameraObject = roverObject.getJSONObject("camera");
+                //Get the camera id
+                String cameraId= cameraObject.getString("id");
+                String fullCameraName = cameraObject.getString("full_name");
 
-                Log.i(TAG, "Got camera " + id + " " + cameraName);
+
+                Log.i(TAG, "Got camera " + id + " " + cameraId);
+                Log.i(TAG,"Full Camera name = " + fullCameraName);
 
                 // Get image url
-                String imageThumbURL = roverObject.getString("img_src");
                 String imageURL = roverObject.getString("img_src");
                 Log.i(TAG, imageURL);
 
-                // Create new Product object
+                // Create new object
                 // Builder Design Pattern
-
+                RoverCollection roverCollection = new RoverCollection(id, fullCameraName, imageURL);
 
                 //
                 // call back with new product data
                 //
-
-                //listener.OnProductAvailable(product);
+                listener.onRoverAvailable(roverCollection);
             }
         } catch( JSONException ex) {
             Log.e(TAG, "onPostExecute JSONException " + ex.getLocalizedMessage());
