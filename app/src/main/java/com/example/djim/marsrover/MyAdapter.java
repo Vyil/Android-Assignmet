@@ -1,6 +1,7 @@
 package com.example.djim.marsrover;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,6 +45,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         public void onClick(View view) {
             int position = getAdapterPosition();
 
+            Intent marsDetail = new Intent(view.getContext().getApplicationContext(),
+                    DetailScreen.class);
+
+            view.getContext().startActivity(marsDetail);
         }
     }
 
@@ -64,6 +69,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     public void onBindViewHolder(ViewHolder holder, int position){
+
 
     }
 
