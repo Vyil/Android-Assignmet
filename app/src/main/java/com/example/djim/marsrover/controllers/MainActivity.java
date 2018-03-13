@@ -1,11 +1,12 @@
-package com.example.djim.marsrover;
+package com.example.djim.marsrover.controllers;
 
-import android.app.SearchManager;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+
+import com.example.djim.marsrover.utilities.MyAdapter;
+import com.example.djim.marsrover.R;
 
 import java.util.ArrayList;
 

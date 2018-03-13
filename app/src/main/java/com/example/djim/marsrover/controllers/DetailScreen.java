@@ -1,9 +1,11 @@
-package com.example.djim.marsrover;
+package com.example.djim.marsrover.controllers;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.djim.marsrover.R;
 
 /**
  * Created by Djim on 13-3-2018.

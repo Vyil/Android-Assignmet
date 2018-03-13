@@ -1,4 +1,4 @@
-package com.example.djim.marsrover;
+package com.example.djim.marsrover.domain;
 
 import java.io.Serializable;
 

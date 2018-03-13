@@ -1,4 +1,4 @@
-package com.example.djim.marsrover;
+package com.example.djim.marsrover.utilities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.djim.marsrover.R;
+import com.example.djim.marsrover.controllers.DetailScreen;
 
 import java.util.ArrayList;
 
