@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.djim.marsrover.R;
 import com.example.djim.marsrover.controllers.DetailScreen;
 import com.example.djim.marsrover.domain.RoverCollection;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -79,7 +80,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     public void onBindViewHolder(ViewHolder holder, int position){
 
+        RoverCollection roverCollection = dataArray.get(position);
+        holder.textView.setText(roverCollection.getCameraName());
 
+        Picasso.with(context).load(roverCollection.getImageURL()).into(holder.imageView);
     }
 
     @Override

@@ -32,17 +32,23 @@ public class MainActivity extends AppCompatActivity implements onRoverAvailable 
 //            roverList.add(new RoverCollection(Integer.toString(i),"Testname","non"));
 //        }
 
+        String[] params = {"https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=cSZD57fGsdMoUQQHYx1GDlE7oitW03FyzMae43H6"};
+        RoverReceiver roverReceiver = new RoverReceiver(this);
+        roverReceiver.execute(params);
+
         recyclerView = findViewById(R.id.recycler_view);
         recyclerLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(recyclerLayoutManager);
+
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        recyclerView.setHasFixedSize(true);
 
         //Use the adapter
         recyclerAdapter = new MyAdapter(this, roverList);
         recyclerView.setAdapter(recyclerAdapter);
 
-        String[] params = {"https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=cSZD57fGsdMoUQQHYx1GDlE7oitW03FyzMae43H6"};
-        RoverReceiver roverReceiver = new RoverReceiver(this);
-        roverReceiver.execute(params);
+
     }
 
     @Override
