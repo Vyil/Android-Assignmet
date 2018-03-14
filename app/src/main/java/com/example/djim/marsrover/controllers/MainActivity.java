@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements onRoverAvailable,
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
-
+        Log.i(TAG,"No spinner item selected");
     }
 
     public void emptyArray(){

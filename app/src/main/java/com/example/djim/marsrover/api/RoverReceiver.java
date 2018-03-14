@@ -106,7 +106,7 @@ public class RoverReceiver extends AsyncTask<String, Void, String> {
             // Get all rovers and start looping
             JSONArray roverData = jsonObject.getJSONArray("photos");
             for(int idx = 0; idx < roverData.length(); idx++) {
-                // array level objects and get user
+                // array level objects
                 JSONObject roverObject = roverData.getJSONObject(idx);
 
                 // Get id and camera name
@@ -114,7 +114,6 @@ public class RoverReceiver extends AsyncTask<String, Void, String> {
                 //Get the camera object
                 JSONObject cameraObject = roverObject.getJSONObject("camera");
                 //Get the camera id
-                String cameraId= cameraObject.getString("id");
                 String fullCameraName = cameraObject.getString("full_name");
 
 
