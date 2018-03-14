@@ -107,19 +107,6 @@ public class MainActivity extends AppCompatActivity implements onRoverAvailable,
     }
 
 
-//    @Override
-//    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//        // Prevent triggering onItemSelected onCreate
-//        if (++counter > 1) {
-//            // Get Camera item from Spinner Menu
-//            item = spinner.getItemAtPosition(position).toString();
-//
-//            // Get Photos by Camera and Date
-//            getSpecificCamera(item);
-//        }
-//    }
-
-
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
         Log.i(TAG,"onItemSelected called");
